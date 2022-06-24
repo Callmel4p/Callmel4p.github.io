@@ -1,0 +1,57 @@
+<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="TM_KIM_NH_PHN_0"></a>TÌM KIẾM NHỊ PHÂN</h1>
+<h2 class="code-line" data-line-start=2 data-line-end=3 ><a id="I_Tm_kim_nh_phn_l_g__2"></a>I/ Tìm kiếm nhị phân là gì ?</h2>
+<p class="has-line-data" data-line-start="3" data-line-end="9">Tìm kiếm nhị phân (Binary Search) là một phương pháp để tìm được phần từ cần thiết trong mảng ĐÃ ĐƯỢC SẮP XẾP.<br>
+<strong>Logic của tìm kiếm nhị phân :</strong><br>
+Chọn lấy một phần tử cho là ở giữa mảng (mid) và so sánh nó với phần tử cần tìm (x).<br>
+- Nếu chúng bằng (mid = x) thì đó chính là phần tử cần tìm.<br>
+- Nếu phần tử giữa lớn hơn phần tử cần tìm (mid &gt; x) thì ta thu hẹp phạm vi tìm kiếm lại còn các số nhỏ hơn mid.<br>
+- Còn nếu mid &lt; x thì thu hẹp phạm vi tìm kiếm lại còn các số lớn hơn mid.</p>
+<p class="has-line-data" data-line-start="10" data-line-end="14"><em><strong>Giải thích</strong></em>:<br>
+Dựa vào tính chất của dãy đã sắp xếp:<br>
++ Khi mid &gt; x thì mọi phần tử ở đằng sau đều sẽ lớn hơn x ( tức không phải x).<br>
++ Khi mid &lt; x thì mọi phần tử ở đằng trước đều nhỏ hơn x (tức không phải x.</p>
+<p class="has-line-data" data-line-start="15" data-line-end="17"><strong><em>Giải thích bằng hình ảnh</em></strong>:<br>
+<img src="https://vnoi.info/wiki/uploads/binary_search_first_example.png" alt="Tìm kiếm nhị phân - Source : VNOI "></p>
+<h2 class="code-line" data-line-start=21 data-line-end=22 ><a id="II_Ti_sao_ta_nn_s_dng_tm_kim_nh_phn__21"></a>II/ Tại sao ta nên sử dụng tìm kiếm nhị phân ?</h2>
+<p class="has-line-data" data-line-start="22" data-line-end="27">Từ phần I/ ta đã thấy, sau mỗi lần so sánh, ta đã loại bỏ nửa mảng mà giá trị cần tìm chắc chắn không xuất hiện - phạm vi tìm kiếm giảm đi 1 nửa.<br>
+Xét với mảng có số lượng phần tử rất lớn có 2 trường hợp khi sử dụng tìm kiếm tuần tự và tìm kiếm nhị phân:<br>
+- Mỗi lần tìm kiếm tuần tự sẽ phải đi từ đầu tới cuối từng số 1 để kiểm tra và lặp lại vô số lần với phạm vi như nhau ( đều rất lớn).<br>
+- Mỗi lần tìm kiếm nhị phân sẽ giúp giảm đi 1 nửa phạm vi tìm kiếm<br>
+Như vậy có thể thấy tìm kiếm nhị phân là một phương pháp không khó nhưng lại giúp cải thiện thời gian tìm kiếm vô cùng đáng kể. Đó cũng chính là câu trả lời cho câu hỏi&quot; Tại sao nên sử dụng tìm kiếm nhị phân ? &quot; - “Vì nó tiện và nhanh”</p>
+<h2 class="code-line" data-line-start=28 data-line-end=29 ><a id="III_Code_nh_no__p_dng_tm_kim_nh_phn__28"></a>III/ Code như nào để áp dụng tìm kiếm nhị phân ?</h2>
+<p class="has-line-data" data-line-start="30" data-line-end="31">Bây giờ khi đã hiểu cơ bản về TKNP, chúng ta sẽ đi vào 1 ví dụ về cách ứng dụng của nó:</p>
+<h4 class="code-line" data-line-start=32 data-line-end=33 ><a id="_bi__Cho_1_mng__c_sp_xp_v_s_x_Tm_kim_v_tr_ca_x_trong_mng_nu_khng_c_hy_in_ra_Khong_co_x_trong_mang_32"></a>Đề bài : Cho 1 mảng đã được sắp xếp và số x. Tìm kiếm vị trí của x trong mảng (nếu không có hãy in ra “Khong co x trong mang”)</h4>
+<h6 class="code-line" data-line-start=33 data-line-end=34 ><a id="V_d_1__33"></a>Ví dụ 1 :</h6>
+<hr>
+<pre><code>- Input: mảng {1, 4, 8, 19, 25, 99,102} và số x = 25
+- Output: 4
+</code></pre>
+<p class="has-line-data" data-line-start="37" data-line-end="39">Giải thích:<br>
+Số 25 nằm ở vị trí thứ 4 trong mảng (hệ đếm bắt đầu từ 0)</p>
+<hr>
+<h6 class="code-line" data-line-start=40 data-line-end=41 ><a id="V_d_2_40"></a>Ví dụ 2:</h6>
+<hr>
+<pre><code>- Input: Mảng {1,2,3} và số x = 4
+- Output: Khong co 4 trong mang
+</code></pre>
+<p class="has-line-data" data-line-start="44" data-line-end="46">Giải thích:<br>
+Số 4 không có trong mảng</p>
+<hr>
+<pre><code class="has-line-data" data-line-start="50" data-line-end="68" class="language-python">mang = list(map(int,input().split()))
+x = int(input())
+mang = sorted(mang)    
+<span class="hljs-comment">## Bây giờ có mảng được sắp xếp rồi thì chiến TKNP thôi !</span>
+dau = <span class="hljs-number">0</span>
+cuoi = len(mang) - <span class="hljs-number">1</span>
+<span class="hljs-keyword">while</span> (dau &lt;= cuoi):
+    giua = (dau + cuoi) // <span class="hljs-number">2</span>
+    <span class="hljs-keyword">if</span> mang[giua] == x:
+        print(giua)
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">elif</span> mang[giua] &gt; x:
+        cuoi = giua - <span class="hljs-number">1</span>
+    <span class="hljs-keyword">else</span>:
+        dau = giua + <span class="hljs-number">1</span>
+<span class="hljs-keyword">if</span>(dau &gt; cuoi):
+    print(<span class="hljs-string">"Khong co %d trong mang"</span> %x)
+</code></pre>
